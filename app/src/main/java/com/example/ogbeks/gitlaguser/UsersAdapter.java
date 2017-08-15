@@ -27,7 +27,7 @@ public class UsersAdapter extends ArrayAdapter<User> {
 
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.list_github_java_developer, parent, false);
+                    R.layout.users_list, parent, false);
         }
         User user = getItem(position);
         TextView usernameTextView = (TextView) listItemView.findViewById(R.id.git_username_list);
