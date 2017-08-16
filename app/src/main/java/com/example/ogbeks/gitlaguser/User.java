@@ -4,44 +4,56 @@ package com.example.ogbeks.gitlaguser;
  * Created by ogbeks on 8/14/2017.
  */
 
+/**
+ * {@link User} represents a single Android platform release.
+ * Each object has 3 properties: username, user GitHub Url, and user Image Resource Id.
+ */
 public class User {
+    // Name of the User
     private String username;
-    private int userImageUri;
-    private String userGithubUrl;
-    private int imageResourceId = NO_IMAGE_PROVIDED;
-    private static final int NO_IMAGE_PROVIDED = -1;
 
+    //the user image resource id
+    private int userImageUri;
+
+    //the user GitHub profile url
+    private String userGitHubUrl;
+
+    /*
+* Create a new User object.
+*
+* @param name is the name of the GitHub user (e.g. unicodedeveloper)
+* @param imgUri is the resource id that corresponding to the user
+* @param gitHubUrl is the GitHub url that corresponds to the i=user
+* */
     public User(String name, int imgUri, String gitHubUrl) {
         username = name;
         userImageUri = imgUri;
-        userGithubUrl = gitHubUrl;
+        userGitHubUrl = gitHubUrl;
     }
 
+    public User(String name, int imgUri) {
+        username = name;
+        userImageUri = imgUri;
+    }
+
+    /**
+     * Get the name of the user
+     */
     public String getUsername() {
         return username;
     }
+    /**
+     * Get the user GitHub url link
+     */
 
-    public void setUserGithubUrl(String userGithubUrl) {
-        this.userGithubUrl = userGithubUrl;
+    public String getUserGitHubUrl() {
+        return userGitHubUrl;
     }
 
-    public void setUserImageUri(int userImageUri) {
-        this.userImageUri = userImageUri;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getUserGithubUrl() {
-        return userGithubUrl;
-    }
-
+    /**
+     * Get the image resource ID
+     */
     public int getUserImageUri() {
         return userImageUri;
-    }
-
-    public boolean hasImage() {
-        return imageResourceId != NO_IMAGE_PROVIDED;
     }
 }
