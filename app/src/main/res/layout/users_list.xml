@@ -14,7 +14,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         tools:src="@mipmap/dummy_user_pic"
-        android:id="@+id/git_user_img"
+        android:id="@+id/git_user_img_list"
         android:paddingEnd="16dp"
  />
 

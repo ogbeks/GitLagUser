@@ -56,4 +56,18 @@ public class User {
     public int getUserImageUri() {
         return userImageUri;
     }
+
+    /**
+     * This is a string value of the User class
+     * This helps in the log of user data
+     * @return
+     */
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", userImageUri=" + userImageUri +
+                ", userGitHubUrl='" + userGitHubUrl + '\'' +
+                '}';
+    }
 }

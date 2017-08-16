@@ -8,12 +8,12 @@
     android:layout_width="match_parent"
     android:id="@+id/user_profile_img"
     android:layout_height="300dp"
-    android:background="@drawable/my_pic"
+    tools:background="@color/icons"
     tools:src="@drawable/my_pic"
     android:layout_alignParentTop="true"
     android:layout_centerHorizontal="true" />
 <TextView
-    android:id="@+id/username"
+    android:id="@+id/username_profile"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:text="Sammy Prodigy"
@@ -38,13 +38,13 @@
         android:layout_alignParentStart="true"
         android:layout_marginBottom="61dp" />
     <TextView
-        android:id="@+id/user_github_url"
+        android:id="@+id/user_github_url_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="http://www.github.com/ogbeks"
         android:textSize="16sp"
         android:paddingLeft="4dp"
-        android:textColor="@color/secondary_text"
+        android:textColor="@color/primary_text"
         android:layout_alignTop="@+id/github_url_label"
         android:layout_toEndOf="@+id/github_url_label"
         android:layout_marginStart="40dp" />
@@ -54,11 +54,11 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
         android:layout_marginBottom="31dp"
         android:layout_marginEnd="110dp"
         android:onClick="shareUserProfile"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        tools:text="Share Profile" />
+        android:text="Share Profile"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
     </RelativeLayout>

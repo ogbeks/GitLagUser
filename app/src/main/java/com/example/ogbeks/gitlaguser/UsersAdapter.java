@@ -61,7 +61,7 @@ public class UsersAdapter extends ArrayAdapter<User> {
         usernameTextView.setText(user.getUsername());
 
         // Find the ImageView in the users_list.xml layout with the ID git_user_img
-        ImageView userImageView = (ImageView) listItemView.findViewById(R.id.git_user_img);
+        ImageView userImageView = (ImageView) listItemView.findViewById(R.id.git_user_img_list);
         // Get the image resource ID from the current User object and
         // set the image to iconView
             userImageView.setImageResource(user.getUserImageUri());
