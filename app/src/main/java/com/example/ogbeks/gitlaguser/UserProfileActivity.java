@@ -1,6 +1,7 @@
 package com.example.ogbeks.gitlaguser;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -32,6 +33,17 @@ public class UserProfileActivity extends AppCompatActivity {
 
         ImageView userImageView = (ImageView) findViewById(R.id.user_profile_img);
         userImageView.setImageResource(userImageResourceId);
+
+        userGitHubUrlTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if((!userGitHubUrl.startsWith("http://")) && (!userGitHubUrl.startsWith("https://"))){
+                    userGitHubUrl="http://"+ userGitHubUrl;
+                }
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(userGitHubUrl));
+                startActivity(browserIntent);
+            }
+        });
     }
     public void shareUserProfile(View v){
         Intent shareProfileIntent = new Intent(Intent.ACTION_SEND);

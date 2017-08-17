@@ -43,8 +43,10 @@
         android:layout_height="wrap_content"
         tools:text="http://www.github.com/ogbeks"
         android:textSize="16sp"
+        android:linksClickable="true"
+        android:textColorLink="@color/colorPrimary"
         android:paddingLeft="4dp"
-        android:textColor="@color/primary_text"
+        android:textColor="@color/colorPrimaryDark"
         android:layout_alignTop="@+id/github_url_label"
         android:layout_toEndOf="@+id/github_url_label"
         android:layout_marginStart="40dp" />
