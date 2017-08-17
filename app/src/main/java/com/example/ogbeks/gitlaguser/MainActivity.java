@@ -33,19 +33,27 @@ public class MainActivity extends AppCompatActivity {
         ListView userListView = (ListView) findViewById(R.id.listview_users);
         userListView.setAdapter(usersAdapter);
 
+        //Create an OnItemClickListener when a userListView child is clicked
 
         userListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //This get the current users on the listview
                 User user = users.get(position);
 
+                //this create and explicit intent which receive two params, the current context,
+                // and the activityClass for the intent
                 Intent userProfile = new Intent(MainActivity.this, UserProfileActivity.class);
 
                 Log.v("MainActivity", user.toString());
+
+                //the putExtra method allows data to be parse together with the intent,
+                //Here we pass the three @params for the next view : username, user GitHub url and user ImageResource
                 userProfile.putExtra("username", user.getUsername());
                 userProfile.putExtra("userImageResourceId", user.getUserImageUri());
                 userProfile.putExtra("userGitHubUrl", user.getUserGitHubUrl());
 
+                //The UserProfile activity is instantiated
                 startActivity(userProfile);
             }
 
