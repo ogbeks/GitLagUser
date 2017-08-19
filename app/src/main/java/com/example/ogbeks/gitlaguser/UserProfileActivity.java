@@ -9,11 +9,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 public class UserProfileActivity extends AppCompatActivity {
 
     private String username;
     private String userGitHubUrl;
-    private int userImageResourceId;
+    private String userImageResourceId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +27,7 @@ public class UserProfileActivity extends AppCompatActivity {
        username= getIntent().getStringExtra("username");
        userGitHubUrl = getIntent().getStringExtra("userGitHubUrl");
         //This required the name and a default integer
-       userImageResourceId = getIntent().getIntExtra("userImageResourceId", -1);
+       userImageResourceId = getIntent().getStringExtra("userImageResourceId");
 
         Log.v("UserProfileActivity", "username: "+username);
         // Find the TextView in the user_profile.xml layout with the ID username_profile
@@ -44,7 +46,9 @@ public class UserProfileActivity extends AppCompatActivity {
         ImageView userImageView = (ImageView) findViewById(R.id.user_profile_img);
         // Get the image resource ID from the current User object and
         // set the image to ImageView
-        userImageView.setImageResource(userImageResourceId);
+        Picasso.with(UserProfileActivity.this)
+                .load(userImageResourceId)
+                .into(userImageView);
 
         //This is a ClickListener for the user GitHub url textView that will create an instance of
         // a browser intent to open a browser to view the user profile

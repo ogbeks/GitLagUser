@@ -13,7 +13,7 @@ public class User {
     private String username;
 
     //the user image resource id
-    private int userImageUri;
+    private String userImageUri;
 
     //the user GitHub profile url
     private String userGitHubUrl;
@@ -25,13 +25,13 @@ public class User {
 * @param imgUri is the resource id that corresponding to the user
 * @param gitHubUrl is the GitHub url that corresponds to the i=user
 * */
-    public User(String name, int imgUri, String gitHubUrl) {
+    public User(String name, String imgUri, String gitHubUrl) {
         username = name;
         userImageUri = imgUri;
         userGitHubUrl = gitHubUrl;
     }
 
-    public User(String name, int imgUri) {
+    public User(String name, String imgUri) {
         username = name;
         userImageUri = imgUri;
     }
@@ -53,7 +53,7 @@ public class User {
     /**
      * Get the image resource ID
      */
-    public int getUserImageUri() {
+    public String getUserImageUri() {
         return userImageUri;
     }
 

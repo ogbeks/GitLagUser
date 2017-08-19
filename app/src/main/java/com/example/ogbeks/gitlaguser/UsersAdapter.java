@@ -1,4 +1,5 @@
 package com.example.ogbeks.gitlaguser;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -64,7 +67,11 @@ public class UsersAdapter extends ArrayAdapter<User> {
         ImageView userImageView = (ImageView) listItemView.findViewById(R.id.git_user_img_list);
         // Get the image resource ID from the current User object and
         // set the image to iconView
-            userImageView.setImageResource(user.getUserImageUri());
+        Picasso.with(getContext())
+                .load(user.getUserImageUri())
+                .resize(50, 50)         //optional
+                .centerCrop()                        //optional
+                .into(userImageView);
 
         // Return the whole list item layout (containing a TextView and an ImageView)
         // so that it can be shown in the ListView

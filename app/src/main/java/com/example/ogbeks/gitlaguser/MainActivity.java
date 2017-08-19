@@ -217,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.v("login", username);
                         Log.v("html_url", userGitHubUrl);
 
-                        gitUsers.add(new User(username,R.drawable.logo_launcher_web,userGitHubUrl));
+                        gitUsers.add(new User(username,userImageUrl,userGitHubUrl));
                     }
                     Log.v("Users", gitUsers.get(1).toString());
                     // Create a new {@link Event} object
