@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -26,7 +27,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    String jsonString;
+    ListView listView;
+    LinearLayout layout;
     final ArrayList<User> users = new ArrayList<User>();
     /** Tag for the log messages */
     public static final String LOG_TAG = MainActivity.class.getSimpleName();
@@ -37,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        listView = (ListView) findViewById(R.id.listview_users);
+        layout = (LinearLayout) findViewById(R.id.progressbar_view);
         // Kick off an {@link AsyncTask} to perform the network request
         GitUserAsyncTask task = new GitUserAsyncTask();
         task.execute();
@@ -52,10 +55,41 @@ public class MainActivity extends AppCompatActivity {
         // Get a reference to the ListView, and attach the adapter to the listView.
         ListView userListView = (ListView) findViewById(R.id.listview_users);
         userListView.setAdapter(usersAdapter);
+        //Create an OnItemClickListener when a userListView child is clicked
+        userListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //This get the current users on the listview
+                User user = users.get(position);
+                //this create and explicit intent which receive two params, the current context,
+                // and the activityClass for the intent
+                Intent userProfile = new Intent(MainActivity.this, UserProfileActivity.class);
+                Log.v("MainActivity", user.toString());
+
+                //the putExtra method allows data to be parse together with the intent,
+                //Here we pass the three @params for the next view : username, user GitHub url and user ImageResource
+                userProfile.putExtra("username", user.getUsername());
+                userProfile.putExtra("userImageResourceId", user.getUserImageUri());
+                userProfile.putExtra("userGitHubUrl", user.getUserGitHubUrl());
+
+                //The UserProfile activity is instantiated
+                startActivity(userProfile);
+            }
+
+        });
 
     }
     private class GitUserAsyncTask extends AsyncTask<URL, Void, ArrayList<User>>
     {
+        @Override
+        protected void onPreExecute() {
+
+            layout.setVisibility(View.VISIBLE);
+            listView.setVisibility(View.GONE);
+
+            super.onPreExecute();
+        }
+
         @Override
         protected ArrayList<User> doInBackground(URL... params) {
             // Create URL object
@@ -77,10 +111,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
         protected void onPostExecute(final ArrayList<User> users) {
             if(users == null){
                 return;
             }
+            layout.setVisibility(View.GONE);
+            listView.setVisibility(View.VISIBLE);
+
             // Create an {@link UserAdapter}, whose data source is a list of
             // {@link User}s. The adapter knows how to create list item views for each item
             // in the list.
