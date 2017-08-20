@@ -27,10 +27,10 @@ public final class QueryUtils {
     /**
      * Query the GitHub dataset and return an {@link ArrayList<User>} object to represent all the java developer in Lagos.
      */
-    public static ArrayList<User> fetchEarthquakeData(String requestUrl) {
-        // Create URL object
-        URL url = createUrl(requestUrl);
+    public static ArrayList<User> fetchGitUserData(String requestUrl) {
 
+        //Create a URL link from the string param
+        URL url = createUrl(requestUrl);
         // Perform HTTP request to the URL and receive a JSON response back
         String jsonResponse = null;
         try {
@@ -39,7 +39,7 @@ public final class QueryUtils {
             Log.e(LOG_TAG, "Error closing input stream", e);
         }
 
-        // Extract relevant fields from the JSON response and create an {@link Event} object
+        // Extract relevant fields from the JSON response and create an {@link ArrayList<User>} object
         ArrayList<User> users = extractFeatureFromJson(jsonResponse);
 
         // Return the {@link ArrayList<User>}
