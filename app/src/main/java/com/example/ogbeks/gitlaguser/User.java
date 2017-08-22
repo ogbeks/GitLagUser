@@ -12,6 +12,8 @@ public class User {
     // Name of the User
     private String username;
 
+    private String fullName;
+
     //the user image resource id
     private String userImageUri;
 
@@ -29,11 +31,6 @@ public class User {
         username = name;
         userImageUri = imgUri;
         userGitHubUrl = gitHubUrl;
-    }
-
-    public User(String name, String imgUri) {
-        username = name;
-        userImageUri = imgUri;
     }
 
     /**
@@ -69,5 +66,9 @@ public class User {
                 ", userImageUri=" + userImageUri +
                 ", userGitHubUrl='" + userGitHubUrl + '\'' +
                 '}';
+    }
+
+    public String getFullName() {
+        return fullName;
     }
 }

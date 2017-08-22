@@ -16,6 +16,7 @@ public class UserProfileActivity extends AppCompatActivity {
     private String username;
     private String userGitHubUrl;
     private String userImageResourceId;
+    private static String USER_REQUEST_URL ="https://api.github.com/users/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,8 @@ public class UserProfileActivity extends AppCompatActivity {
        userGitHubUrl = getIntent().getStringExtra("userGitHubUrl");
         //This required the name and a default integer
        userImageResourceId = getIntent().getStringExtra("userImageResourceId");
+        setTitle(username);
+        USER_REQUEST_URL = USER_REQUEST_URL+username;
 
         Log.v("UserProfileActivity", "username: "+username);
         // Find the TextView in the user_profile.xml layout with the ID username_profile

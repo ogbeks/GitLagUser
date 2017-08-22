@@ -1,4 +1,6 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">GitLagUser</string>
-    <string name="access_token">4c03f562f7687c157bd83f3153fd9d82e6727f5e</string>
+    <string name="username"><xliff:g example="Ogbeks" id="user">%s</xliff:g></string>
+    <!-- Text to display in the list when there are no earthquakes [CHAR LIMIT=NONE] -->
+    <string name="no_users">No users found.</string>
 </resources>

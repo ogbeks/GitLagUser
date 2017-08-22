@@ -69,7 +69,7 @@ public class UsersAdapter extends ArrayAdapter<User> {
         // set the image to iconView
         Picasso.with(getContext())
                 .load(user.getUserImageUri())
-                .resize(50, 50)         //optional
+                .resize(100, 100)         //optional
                 .centerCrop()                        //optional
                 .into(userImageView);
 

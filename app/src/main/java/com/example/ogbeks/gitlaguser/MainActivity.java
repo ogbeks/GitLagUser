@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -16,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
     ListView userListView;
     LinearLayout progressLayout;
+    /** TextView that is displayed when the list is empty */
+    private TextView mEmptyStateTextView;
 
     GitUserAsyncTask task = new GitUserAsyncTask();
     /** Tag for the log messages */
@@ -27,7 +30,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
         userListView = (ListView) findViewById(R.id.listview_users);
+        userListView.setEmptyView(mEmptyStateTextView);
         progressLayout = (LinearLayout) findViewById(R.id.progressbar_view);
         // Kick off an {@link AsyncTask} to perform the network request
         task.execute(GITHUB_REQUEST_URL);
@@ -97,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(ArrayList<User> users) {
             if(users == null){
-                return;
+                mEmptyStateTextView.setText(R.string.no_users);
             }
             progressLayout.setVisibility(View.GONE);
             userListView.setVisibility(View.VISIBLE);

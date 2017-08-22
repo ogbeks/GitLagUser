@@ -3,7 +3,8 @@
     package="com.example.ogbeks.gitlaguser">
     <!-- Internet Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <!-- Check for internet network connectivity -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <!-- Permission to write to external storage -->
     <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
     <application
@@ -13,14 +14,14 @@
         android:roundIcon="@mipmap/logo_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:roundIcon="@mipmap/logo_launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UserProfileActivity"></activity>
+        <activity android:name=".UserProfileActivity" android:roundIcon="@mipmap/logo_launcher"></activity>
     </application>
 
 </manifest>
