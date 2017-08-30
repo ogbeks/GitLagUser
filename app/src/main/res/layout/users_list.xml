@@ -15,16 +15,16 @@
         android:layout_height="60dp"
         tools:src="@mipmap/dummy_user_pic"
         android:id="@+id/git_user_img_list"
-        android:paddingEnd="20dp"
  />
 
     <TextView
-        android:layout_width="wrap_content"
         android:id="@+id/git_username_list"
+        android:layout_width="wrap_content"
+        android:paddingLeft="10dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:textSize="20sp"
         android:textColor="@color/primary_text"
+        android:textSize="20sp"
         android:textStyle="bold"
         tools:text="Unicodedevelper" />
 

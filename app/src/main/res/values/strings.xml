@@ -1,5 +1,5 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">GitLagUser</string>
+    <string name="app_name">GitHub Lagos Java Developer</string>
     <string name="username"><xliff:g example="Ogbeks" id="user">%s</xliff:g></string>
     <!-- Text to display in the list when there are no earthquakes [CHAR LIMIT=NONE] -->
     <string name="no_users">No users found.</string>
