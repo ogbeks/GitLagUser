@@ -124,8 +124,8 @@ public final class QueryUtils {
         return output.toString();
     }
     /**
-     * Return an {@link User} object by parsing out information
-     * about the first earthquake from the input earthquakeJSON string.
+     * Return an {@link ArrayList<User>} ArrayList by parsing out Json information
+     *
      */
     private static ArrayList<User> extractFeatureFromJson(String gitHubUserJson) {
         //If the JSON string is empty or null, then return early
@@ -139,7 +139,7 @@ public final class QueryUtils {
             ArrayList<User> gitUsers = new ArrayList<User>();
             // If there are results in the features array
             if (jsonArray.length() > 0) {
-                // Extract out the first feature (which is an earthquake)
+
                 for(int i=0; i<jsonArray.length(); i++){
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
 
@@ -149,7 +149,7 @@ public final class QueryUtils {
                     String userImageUrl = jsonObject.getString("avatar_url");
                     gitUsers.add(new User(username,userImageUrl,userGitHubUrl));
                 }
-                // Create a new {@link Event} object
+                // Create a new {@link USer} object
                 return gitUsers;
 
             }

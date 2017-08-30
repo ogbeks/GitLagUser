@@ -1,22 +1,26 @@
 package com.example.ogbeks.gitlaguser;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+  {
 
     ListView userListView;
-    LinearLayout progressLayout;
+    RelativeLayout progressLayout;
     /** TextView that is displayed when the list is empty */
     private TextView mEmptyStateTextView;
 
@@ -33,9 +37,29 @@ public class MainActivity extends AppCompatActivity {
         mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
         userListView = (ListView) findViewById(R.id.listview_users);
         userListView.setEmptyView(mEmptyStateTextView);
-        progressLayout = (LinearLayout) findViewById(R.id.progressbar_view);
-        // Kick off an {@link AsyncTask} to perform the network request
-        task.execute(GITHUB_REQUEST_URL);
+        progressLayout = (RelativeLayout) findViewById(R.id.progressbar_view);
+        // Get a reference to the ConnectivityManager to check state of network connectivity
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        // Get details on the currently active default data network
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+
+        // If there is a network connection, fetch data
+        if (networkInfo != null && networkInfo.isConnected()) {
+            // Kick off an {@link AsyncTask} to perform the network request
+            task.execute(GITHUB_REQUEST_URL);
+
+        } else {
+            // Otherwise, display error
+            // First, hide loading indicator so error message will be visible
+            View loadingIndicator = findViewById(R.id.progressbar_view);
+            loadingIndicator.setVisibility(View.GONE);
+
+            // Update empty state with no connection error message
+            mEmptyStateTextView.setText(R.string.no_internet_connection);
+        }
+
     }
     private void updateUri(final ArrayList<User> users){
         // Create an {@link UserAdapter}, whose data source is a list of

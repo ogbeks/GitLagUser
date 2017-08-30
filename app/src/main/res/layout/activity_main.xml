@@ -2,48 +2,33 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="5dp"
-    android:paddingRight="5dp" >
+ >
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/progressbar_view"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical" >
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal" >
-
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+ >
+            <!-- Loading indicator for user feedback between queries to USGS -->
             <ProgressBar
-                style="?android:attr/progressBarStyle"
+                android:id="@+id/loading_indicator"
+                style="@style/Widget.AppCompat.ProgressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal" />
-
+                android:layout_centerInParent="true"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
+              android:layout_centerInParent="true"
+                android:layout_below="@id/loading_indicator"
                 android:text="Loading data..." />
-        </LinearLayout>
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:background="#C0C0C0" />
-    </LinearLayout>
+    </RelativeLayout>
 
     <ListView
         android:id="@+id/listview_users"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="1dip"
-        android:visibility="gone" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
     <!-- Empty view is only visible when the list has no items. -->
     <TextView
         android:id="@+id/empty_view"

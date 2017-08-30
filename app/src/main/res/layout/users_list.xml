@@ -11,8 +11,8 @@
     android:padding="16dp">
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         tools:src="@mipmap/dummy_user_pic"
         android:id="@+id/git_user_img_list"
         android:paddingEnd="20dp"
@@ -23,7 +23,7 @@
         android:id="@+id/git_username_list"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textColor="@color/primary_text"
         android:textStyle="bold"
         tools:text="Unicodedevelper" />
